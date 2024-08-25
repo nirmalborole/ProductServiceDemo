@@ -1,12 +1,11 @@
 package com.example.apidemo.Controller;
 
 import com.example.apidemo.Services.ProductService;
+import com.example.apidemo.dtos.CreateProductRequestDto;
 import com.example.apidemo.models.Product;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +17,7 @@ public class ProductController {
     private ProductService productService;
 
     @Autowired
-    public ProductController(ProductService productService) {
+    public ProductController(@Qualifier("selfProduct") ProductService productService) {
         this.productService = productService;
     }
 
@@ -29,5 +28,13 @@ public class ProductController {
 
     public List<Product> getProducts(){
         return new ArrayList<Product>();
+    }
+
+
+    @PostMapping("")
+    public  Product createProduct(@RequestBody CreateProductRequestDto requestDto){
+        return productService.createProduct(requestDto.getTitle(), requestDto.getPrice(), requestDto.getDescription(), requestDto.getImage(), requestDto.getCategoryName());
+
+
     }
 }

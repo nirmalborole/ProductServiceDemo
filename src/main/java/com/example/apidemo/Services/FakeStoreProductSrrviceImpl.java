@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
-@Service
+@Service("fakeStore")
 public class FakeStoreProductSrrviceImpl implements ProductService{
     private RestTemplate restTemplate;
 
@@ -26,7 +26,7 @@ public class FakeStoreProductSrrviceImpl implements ProductService{
         product.setPrice(dto.getPrice());
         Category category=new Category();
         category.setName(dto.getCategory());
-        product.setCategory(category);
+//        product.setCategory(category);
         return product;
     }
     @Override
@@ -39,5 +39,25 @@ public class FakeStoreProductSrrviceImpl implements ProductService{
     @Override
     public List<Product> getAllProducts() {
         return List.of();
+    }
+
+    @Override
+    public Product createProduct(String title, double price, String description, String image, String categoryName) {
+        return null;
+    }
+
+    @Override
+    public Product updatePrice(long productId, double updatePrice) {
+        return null;
+    }
+
+    @Override
+    public Product updateImage(long productId, String updatedImage) {
+        return null;
+    }
+
+    @Override
+    public boolean deleteProduct() {
+        return false;
     }
 }
