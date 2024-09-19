@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public class User {
+public class UserDemo {
     @Id
     private long id;
     private String name;

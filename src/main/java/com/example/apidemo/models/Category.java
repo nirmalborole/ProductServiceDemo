@@ -1,5 +1,6 @@
 package com.example.apidemo.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -13,6 +14,7 @@ public class Category {
     private long id;
     private String name;
     @OneToMany(mappedBy = "category")
+    @JsonIgnore
     private List<Product>products;
 
 }

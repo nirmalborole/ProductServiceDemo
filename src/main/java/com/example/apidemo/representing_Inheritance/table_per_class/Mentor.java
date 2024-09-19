@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @Entity(name = "tpc_menter")
-public class Mentor extends User {
+public class Mentor extends UserDemo {
     private String avg_rating;
     private String company;
 }

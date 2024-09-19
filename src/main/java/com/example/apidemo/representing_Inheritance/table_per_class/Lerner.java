@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @Entity(name = "tpc_lerner")
-public class Lerner extends User {
+public class Lerner extends UserDemo {
     private  String college;
     private String company;
 }

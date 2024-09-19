@@ -4,6 +4,9 @@ import com.example.apidemo.models.Category;
 import com.example.apidemo.models.Product;
 import com.example.apidemo.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,8 +27,10 @@ public class SelfProductService implements ProductService{
     }
 
     @Override
-    public List<Product> getAllProducts() {
-        return List.of();
+    public Page<Product> getAllProducts(int pageSize, int pageNumber) {
+
+        return productRepository.findAll(PageRequest.of(pageNumber,pageSize,
+                Sort.by("price").ascending().and(Sort.by("title").descending())));
     }
 
     @Override
